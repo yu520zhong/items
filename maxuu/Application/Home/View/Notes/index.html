@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>在路上 | 米鱼博客</title>
+<meta name="keywords" content="前端，前端开发，css，css3，js，js特效，网页特效，php，jquery，jquery ajax，java,技术流博客">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+
+<!-- revolution slider start -->
+<div class="focusbox">
+    <div class="container"><h1 class="focusbox-title">在路上</h1>
+        <div class="focusbox-text">在路上，我们相遇，如今又要各自地生活。怀念着彼此的怀念。我向往天堂,正路过人间...</div>
+    </div>
+</div>
+<!--container start-->
+<div class="container space30">
+    <div class="row">
+        <div class="col-md-8">
+            <section class="article">
+            <ul class="filter">
+                    <li class="filter-title">文章列表</li>
+                    <notempty name="categorynote.parent">
+                        <volist name="categorynote.parent" id="v">
+                            <li>
+                                <p class="cateline">
+                                <switch name="i" >
+                                    <case value="2">一级</case>
+                                    <case value="3">二级</case>
+                                    <default />顶级
+                                </switch>
+                                </p>
+                                <foreach name="v" item="vv"><a href="{:notemkFilterURL('cid',$vv['id'])}" class="cid-{$vv.id}" >{$vv.name}</a></foreach></li>
+                            </li>
+                        </volist>
+                    </notempty>
+                </ul>
+                <empty name="notes.data">
+                    <p class="no_find">很抱歉，没有找到您需要的技术文摘!</p><else/>
+                    <foreach name="notes.data" item="v">
+                        <article class="excerpt excerpt-text">
+                            <div class="row">
+                                <notempty name="v.thumb">
+                                    <div class="col-md-4">
+                                        <a href="{:U('Notes/notes',array('id'=>$v['id']))}" class="nail">
+                                            <img src="{$v.thumb}" alt="{$v.name}"  class="thumb">
+                                        </a>
+                                    </div>
+                                    <else/>
+                                </notempty>
+                                <header class="col-md-8">
+                                    <a href="{:U('Notes/notes',array('id'=>$v['id']))}">
+                                        <h2 class="blog-title">
+                                            {$v.name}
+                                        </h2>
+                                    </a>
+
+                                    <ul class="meta list-inline">
+                                        <li>{$v.add_time}</li>
+                                        <li>阅读({$v.click})</li>
+                                        <li>分类：
+                                        <a href="{:U('Notes/index',array('cid'=>$v['category_id']))}">{$v.category_name}</a>
+                                    </li>
+                                    </ul>
+                                    <div class="blog-desc">{$v.summary}</div>
+                                </header>
+                            </div>
+                        </article>
+                    </foreach>
+                </empty>
+
+            </section>
+            <nav class="text-center">
+                <div class="pagination">{$notes.pagelist}</div>
+            </nav>
+        </div>
+
+        <div class="col-md-4 sidebar">
+
+            <div class="widget widget-posts">
+                <h3>热门文章</h3>
+                <ul>
+                    <foreach name="recommend" item="v">
+                        <li>
+                            <a href="{:U('Notes/notes',array('id'=>$v['id']))}">
+                                <dl class="hot-article">
+                                    <dt>
+                                        <notempty name="v.thumb">
+                                            <img class="thumb" src="{$v.thumb}{$IMG_THUMB160}" >
+                                            <else/>
+                                        </notempty>
+                                    </dt>
+                                    <dd><span class="text">{$v.name}</span></dd>
+                                    <dd><span class="muted">{$v.add_time}</span><span class="muted">阅读({$v.click})</span></dd>
+                                </dl>
+                            </a>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+
+            <div class="widget widget-posts">
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-6.jpg" class="full-img"></a>
+            </div>
+
+            <div class="widget widget-posts" >
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-3.jpg" class="full-img"></a>
+            </div>
+
+        </div>
+        <!--feature end-->
+    </div>
+</div>
+
+<include file="Public:footer" />
+<include file="Public:js" />
+
+<script>
+    // js跳转到搜索结果页面
+    $('.search').blur(function() {
+        location.href = ThinkPHP['MODULE'] + '/other/search?keywords=' + $(this).text();
+    });
+    //导航条选中效果
+    //筛选列表，分类的当前选中效果
+    <foreach name="categorynote.pids" item="v">
+            $(".cid-{$v}").addClass("curr");
+    </foreach>
+//文章排序的选中效果
+    <present name="Think.get.order">
+            $(".order-{$Think.get.order}").addClass("curr");
+    <else/>
+    $(".order-0").addClass("curr");
+    </present>
+    $("#Notes_index").addClass("active");
+</script>
+</body>
+</html>

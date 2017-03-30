@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>生活微语 | 米鱼博客</title>
+<meta name="keywords" content="前端，前端开发，css，css3，js，js特效，网页特效，php，jquery，jquery ajax，java,技术流博客">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+<!-- revolution slider start -->
+<section class="focusbox">
+    <div class="container">
+        <h1 class="focusbox-title">生活微语</h1>
+        <div class="focusbox-text">生活无语，流年无痕，浅遇沧桑。</div>
+    </div>
+</section>
+   <div class="container space30">
+        <div class="row">
+            <!--feature start-->
+            <div class="col-md-8">
+                <div id="focusslide" class="carousel slide" data-ride="carousel" style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    <ol class="carousel-indicators">
+                        <li data-target="#focusslide" data-slide-to="0" class="active">
+                        </li>
+                        <li data-target="#focusslide" data-slide-to="1" class="">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage4.jpg" class="full-img"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage5.jpg" class="full-img"></a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev">
+                        <i class="iconfont arrow-btn">
+                            &#xe65c;
+                        </i>
+                    </a>
+                    <a class="right carousel-control" href="#focusslide" role="button" data-slide="next">
+                        <i class="iconfont arrow-btn">
+                            &#xe65b;
+                        </i>
+                    </a>
+                </div>
+                <div class="demo">
+                        <div class="input-group mb10">
+                            <input type="text" id="keyword" placeholder="请输入搜索关键词" class="form-control keywords-input">
+                            <span class="input-group-btn">
+                                <button class="btn btn-search btn-success keywords-btn" type="button" onclick="getPage(1)">搜索</button>
+                            </span>
+                        </div>
+                    <div class="content" id="ajax_lists">
+                    </div>
+                </div>
+
+
+                <nav class="text-center">
+                    <div class="pagination">{$news.pagelist}</div>
+                </nav>
+
+           </div>
+           <div class="col-md-4 sidebar">
+                <div class="widget widget-posts">
+                    <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-1.jpg" class="full-img"></a>
+                </div>
+                <div class="widget widget-posts">
+                    <div id="calendar"></div>
+                </div>
+                <div class="widget widget-posts">
+                    <h3>微语推荐</h3>
+                    <ul>
+                        <foreach name="hot" item="v">
+                            <li>
+                                <a href="{:U('Essay/essay',array('id'=>$v['id']))}">
+                                    <dl class="hot-article">
+                                        <dt>
+                                            <notempty name="v.thumb">
+                                                <img class="thumb" src="{$v.thumb}" >
+                                                <else/>
+                                            </notempty>
+                                        </dt>
+                                        <dd><span class="text">{$v.name}</span></dd>
+                                        <dd><span class="muted">{$v.add_time}</span><span class="muted">{$v.author}</span></dd>
+                                    </dl>
+                                </a>
+                            </li>
+                        </foreach>
+
+                    </ul>
+                </div>
+
+                <div class="widget widget-posts" >
+                    <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-4.jpg" class="full-img"></a>
+                </div>
+
+           </div>
+            <!--feature end-->
+        </div>
+    </div>
+
+<include file="Public:footer" />
+
+<include file="Public:js" />
+<script type="text/javascript">
+    var url_ajax = "__APP__/Essay/orders";
+    $(function() {
+        $("#ajax_lists").delegate(".pager a", "click", function() {
+            var page = $(this).attr("data-page");
+            getPage(page);
+        })
+        getPage(1);
+    });
+    function getPage(page) {
+        var keyword = $("#keyword").val();
+        $.get(url_ajax, {keyword: keyword, p: page}, function(data) {
+            $('#ajax_lists').html(data);
+        })
+    };
+    $("#Essay_index").addClass("active");
+</script>
+</body>
+</html>
+
+
+
+
+

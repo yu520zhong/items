@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>{$title} | 米鱼博客</title>
+<meta name="keywords" content="前端，前端开发，css，css3，js，js特效，网页特效，php，jquery，jquery ajax，java,技术流博客">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<link rel="stylesheet" href="__CSS__/index.css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+<!-- revolution slider start -->
+<section class="focusbox">
+    <div class="container">
+        <h1 class="focusbox-title">资讯</h1>
+        <div class="focusbox-text">了解最前沿的资讯，感受这个时代的发展与变迁。</div>
+    </div>
+</section>
+<!--container start-->
+    <div class="container space30">
+        <div class="row">
+            <!--feature start-->
+            <div class="col-md-8">
+                <div id="focusslide" class="carousel slide" data-ride="carousel" style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    <ol class="carousel-indicators">
+                        <li data-target="#focusslide" data-slide-to="0" class="active">
+                        </li>
+                        <li data-target="#focusslide" data-slide-to="1" class="">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage2.jpg" class="full-img"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage3.jpg" class="full-img"></a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev">
+                        <i class="iconfont arrow-btn">
+                            &#xe65c;
+                        </i>
+                    </a>
+                    <a class="right carousel-control" href="#focusslide" role="button" data-slide="next">
+                        <i class="iconfont arrow-btn">
+                            &#xe65b;
+                        </i>
+                    </a>
+                </div>
+                <div class="row">
+                    <ul id="filters" class="list-unstyled news-filter col-md-12">
+                        <noempty name="categorynews.parent">
+                            <volist name="categorynews.parent" id="v">
+                                <foreach name="v" item="vv">
+                                    <li>
+                                    <a href="{:newsmkFilterURL('cid',$vv['id'])}" class="cid-{$vv.id}" >{$vv.name}</a>
+                                    </li>
+                                </foreach>
+                            </volist>
+                        </noempty>
+                    </ul>
+                    <empty name="news.data">
+                        <p class="no_find">很抱歉，没有找到您需要的技术文摘!</p><else/>
+                        <foreach name="news.data" item="v">
+                            <div class="col-md-4">
+                                <div class="digest-grid">
+                                    <notempty name="v.thumb">
+                                        <div class="digest-img">
+                                            <a href="{:U('News/news',array('id'=>$v['id']))}">
+                                                <img src="{$v.thumb}" class="img-responsive" alt="">
+                                            </a>
+                                        </div>
+                                        <else/>
+                                    </notempty>
+                                    <div class="digest-info">
+                                        <h4><a href="{:U('News/news',array('id'=>$v['id']))}" target="_blank" title="{$v.name}">{$v.name}</a></h4>
+                                        <ul>
+                                            <li >
+                                                <p class="views views-info">{$v.add_time}</p>
+                                            </li>
+                                            <li >
+                                                <p class="views views-info">阅读({$v.click})</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </foreach>
+                    </empty>
+                </div>
+                <nav class="text-center">
+                    <div class="pagination">{$news.pagelist}</div>
+                </nav>
+           </div>
+           <div class="col-md-4 sidebar">
+                <div class="widget widget-posts">
+                    <h3>最新资讯</h3>
+                    <ul>
+                        <foreach name="latest.data" item="v">
+                            <li>
+                                <a href="{:U('News/news',array('id'=>$v['id']))}">
+                                    <dl class="hot-article">
+                                        <dt>
+                                            <img class="thumb" src="{$v.thumb}" >
+                                        </dt>
+                                        <dd><span class="text">{$v.name}</span></dd>
+                                        <dd><span class="muted">{$v.add_time}</span><span class="muted">阅读({$v.click})</span></dd>
+                                    </dl>
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+                <div class="widget widget-posts">
+                    <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-2.png" class="full-img"></a>
+                </div>
+
+                <div class="widget widget-posts" >
+                    <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-1.jpg" class="full-img"></a>
+                </div>
+
+           </div>
+            <!--feature end-->
+        </div>
+    </div>
+
+<include file="Public:footer" />
+<include file="Public:js" />
+<script>
+$("#News_index").addClass("active");
+//筛选列表，分类的当前选中效果
+<foreach name="categorynews.pids" item="v">
+    $(".cid-{$v}").addClass("curr");
+</foreach>
+</script>
+</body>
+</html>

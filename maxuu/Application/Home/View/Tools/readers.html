@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>{$title} | 米鱼博客</title>
+<meta name="keywords" content="留言，评论，前端，前端开发，js，css，js特效">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+<section class="focusbox">
+    <div class="container">
+        <h1 class="focusbox-title">留言</h1>
+        <div class="focusbox-text">留下你的足迹,我在时光里等你!</div>
+    </div>
+</section>
+<!--container start-->
+<div class="container space30">
+    <div class="row">
+        <!--feature start-->
+        <div class="col-md-8">
+            <div id="focusslide" class="carousel slide" data-ride="carousel" style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <ol class="carousel-indicators">
+                    <li data-target="#focusslide" data-slide-to="0" class="active">
+                    </li>
+                    <li data-target="#focusslide" data-slide-to="1" class="">
+                    </li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage3.jpg" class="full-img"></a>
+                    </div>
+                    <div class="item">
+                        <a href="#" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage1.jpg" class="full-img"></a>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev">
+                    <i class="iconfont arrow-btn">
+                        &#xe65c;
+                    </i>
+                </a>
+                <a class="right carousel-control" href="#focusslide" role="button" data-slide="next">
+                    <i class="iconfont arrow-btn">
+                        &#xe65b;
+                    </i>
+                </a>
+            </div>
+            <div class="blog-comments mtop15">
+                    <!-- 多说评论框 start -->
+        <div class="ds-thread" data-thread-key="readers" data-title="留言" data-url="__ACTION__"></div>
+<!-- 多说评论框 end -->
+            </div>
+
+
+
+        </div>
+        <div class="col-md-4 sidebar">
+            <div class="widget widget-about">
+                <h2>参与互动</h2>
+                <p class="note">喜欢就留言呗，希望与大家一起学习分享！</p>
+            </div>
+
+            <div class="widget widget-posts" >
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-5.jpg" class="full-img"></a>
+            </div>
+
+
+        </div>
+        <!--feature end-->
+    </div>
+</div>
+
+{/* footer */ }
+<include file="Public:footer" />
+<include file="Public:js" />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"maceuu"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+$("#readers_index").addClass("active");
+</script>
+<!-- 多说公共JS代码 end -->
+</body>
+</html>

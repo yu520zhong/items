@@ -1,0 +1,34 @@
+<extend name="Base/common" />
+<block name="title"><title>收货地址</title></block>
+<block name="keywords"><meta name="keywords" content="MIUU博客，个人博客，米鱼博客，技术学习分享"></block>
+<block name="description"><meta name="description" content="Miuu个人博客，是一个web前端的程序员个人网站，关注于互联网网站开发技术和行业最新资讯，与大家一起学习交流。"></block>
+<block name="css"><include file="Public:css" /></block>
+<block name="web_css">
+	<link rel="stylesheet" href="__CSS__/cart.css"/>
+</block>
+<block name="js"><include file="Public:js" /></block>
+<block name="web_js">
+</block>
+<block name="header"><include file="Public:header" /></block>
+<block name="main">
+<div class="usercenter wrapper wrapper-content">
+	<div class="container">
+		<div class="row">
+			<include file="User/_menu" />
+			<div class="col-sm-9">
+				<div class="title"><h4><strong>管理收货地址</strong></h4></div>
+				<hr>
+				<table class="table table-bordered">
+					<tr><th width="95">收件人：</th><td>{$addr.consignee}</td></tr>
+					<tr><th>详细地址：</th><td>{$addr.address}</td></tr>
+					<tr><th>手机：</th><td>{$addr.phone}</td></tr>
+					<tr><th>邮箱：</th><td>{$addr.email}</td></tr>
+				</table>
+				<p class="text-center">
+				<a href="{:U('User/addrEdit')}" class="btn btn-info ">修改地址</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+</block>
+<block name="footer"><include file="Public:footer" /></block>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="baidu-site-verification" content="UcNs3IHDX2" />
+<title>米鱼博客-IT博客-web前端，php，javascript,jquery,记录米鱼网站学习开发的个人技术博客</title>
+<meta name="keywords" content="前端，前端开发，css，css3，js，js特效，网页特效，php，jquery，jquery ajax，java,技术流博客">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<link rel="stylesheet" type="text/css" href="__PLUGINS__/IonCalendar/css/ion.calendar.css">
+<link rel="stylesheet" href="__CSS__/index.css" />
+<link rel="stylesheet" href="__PLUGINS__/slick/css/slick.css">
+<link rel="stylesheet" href="__PLUGINS__/slick/css/slick-set.css">
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+<!-- Demo start  -->
+<div class="slick">
+    <div>
+        <a href="{:U('Notes/notes',array('id'=>'33'))}" target="_blank">
+            <img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/6.jpg" alt="有些往事，只在雨天里忆起">
+            <span>有些往事，只在雨天里忆起</span>
+        </a>
+    </div>
+    <div>
+        <a href="{:U('Notes/notes',array('id'=>'26'))}" target="_blank">
+            <img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/1.jpg" alt="做响应式网站需要考虑多少种设备的尺寸？">
+            <span>做响应式网站需要考虑多少种设备的尺寸？</span>
+        </a>
+    </div>
+    <div>
+        <a href="{:U('Blog/articles',array('id'=>'27'))}" target="_blank">
+            <img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/2.jpg" alt="为什么我们放弃了 Zepto">
+            <span>为什么我们放弃了 Zepto</span>
+        </a>
+    </div>
+</div>
+<!-- Demo end -->
+
+<!--container start-->
+<div class="container space30">
+    <div class="row">
+        <!--feature start-->
+        <div class="col-md-8">
+                <div class="row">
+                    <foreach name="articles.data" item="v">
+                        <div class="col-md-4">
+                            <div class="digest-grid">
+                                <label class="digest-label"><a class="digest-label-link" href="{:U('Blog/index',array('cid'=>$v['category_id']))}" >{$v.category_name}</a></label>
+                                <div class="digest-img">
+                                    <a href="{:U('Blog/articles',array('id'=>$v['id']))}">
+                                        <empty name="v.thumb">
+                                            <img src="http://7xsqlc.com1.z0.glb.clouddn.com/default.jpg" class="img-responsive" alt="">
+                                            <else/>
+                                            <img src="{$v.thumb}" class="img-responsive" alt="">
+                                        </empty>
+                                    </a>
+                                </div>
+                                <div class="digest-text">
+                                    <h4><a href="{:U('Blog/articles',array('id'=>$v['id']))}" class="title title-info">{$v.name}</a></h4>
+                                    <p class="detail">
+                                        <span class="author author-info mr10">{$v.author}</span>
+                                        <span class="views views-info">{$v.add_time}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="focusslide" class="carousel slide" data-ride="carousel" style="touch-action: pan-y; -webkit-user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                            <ol class="carousel-indicators">
+                                <li data-target="#focusslide" data-slide-to="0" class="active">
+                                </li>
+                                <li data-target="#focusslide" data-slide-to="1" class="">
+                                </li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <a href="{:U('Essay/essay',array('id'=>'43'))}" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage11.jpg" class="full-img"></a>
+
+                                </div>
+                                <div class="item">
+                                    <a href="{:U('Notes/notes',array('id'=>'34'))}" target="_blank" ><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/fullimage12.jpg" class="full-img"></a>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev">
+                                <i class="iconfont arrow-btn">
+                                    &#xe65c;
+                                </i>
+                            </a>
+                            <a class="right carousel-control" href="#focusslide" role="button" data-slide="next">
+                                <i class="iconfont arrow-btn">
+                                    &#xe65b;
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="sticky">
+                            <h4 class="title">
+                                美文推荐
+                            </h4>
+                            <ul>
+                                <foreach name="essay" item="v">
+                                    <li class="item">
+                                        <a href="{:U('Essay/essay',array('id'=>$v['id']))}"><img src="{$v.thumb}" class="img-responsive" alt=""></a>
+                                        <a href="{:U('Essay/essay',array('id'=>$v['id']))}">
+                                        {$v.name}</a>
+                                    </li>
+                                </foreach>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- blog -->
+                <div class="row">
+                    <foreach name="down.data" item="v">
+                        <div class="col-md-4">
+                            <div class="digest-grid">
+                                <label class="digest-label"><a class="digest-label-link" href="{:U('Down/index',array('cid'=>$v['category_id']))}" target="_blank">{$v.categorydown_name}</a></label>
+                                <div class="digest-img">
+                                     <a href="{:U('Down/down',array('id'=>$v['id']))}">
+                                        <empty name="v.thumb">
+                                            <img src="http://7xsqlc.com1.z0.glb.clouddn.com/default.jpg" class="img-responsive" alt="">
+                                            <else/>
+                                            <img src="{$v.thumb}" class="img-responsive" alt="">
+                                        </empty>
+                                    </a>
+                                </div>
+                                <div class="digest-info">
+                                    <h4><a href="{:U('Down/down',array('id'=>$v['id']))}" class="title title-info">{$v.name}</a></h4>
+                                     <p class="views views-info"><span class="mr15">{$v.add_time}</span><span>阅读（{$v.click}）</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+        </div>
+        <div class="col-md-4 sidebar">
+            <div class="widget widget-posts">
+                 <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-6.jpg" class="full-img"></a>
+            </div>
+
+            {/*
+            <div class="widget signboard">
+                <strong>会员中心</strong>
+                <p class="sign">
+                    <a href="javascript:;" class="btn btn-primary signin-loader">立即登录</a>
+                    <a href="javascript:;" class="btn btn-default signup-loader">现在注册</a>
+                </p>
+                <h4>需要登录才能进入会员中心</h4>
+            </div>
+            */}
+
+            <div class="widget widget-posts">
+                <h3>在路上</h3>
+                <ul>
+                    <foreach name="notes" item="v">
+                        <li>
+
+                                <dl class="hot-article">
+                                    <dt>
+                                        <notempty name="v.thumb">
+                                            <a href="{:U('Notes/notes',array('id'=>$v['id']))}">
+                                                <img class="thumb" src="{$v.thumb}" >
+                                            </a>
+                                            <else/>
+                                        </notempty>
+                                    </dt>
+                                    <dd><span class="text"><a href="{:U('Notes/notes',array('id'=>$v['id']))}">{$v.name}</a></span></dd>
+                                    <dd><span class="muted">{$v.add_time}</span><span class="muted">阅读({$v.click})</span></dd>
+                                </dl>
+
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="widget widget-posts">
+                <div id="calendar"></div>
+            </div>
+
+            <div class="widget widget-posts" >
+                <h3>每日一笑</h3>
+                <div class="smart-content">
+                    <div class="smartmarquee smartexp">
+                        <ul class="contentexp">
+                            <foreach name="result.data" item="v">
+                                <li>
+                                    <a class="title">{$v.updatetime}</a><br>
+                                    <span>{$v.content}</span>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget widget-posts" >
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-5.jpg" class="full-img"></a>
+            </div>
+        </div>
+        <!--feature end-->
+    </div>
+</div>
+<include file="Public:footer_index" />
+<include file="Public:js" />
+
+<!-- calendar -->
+<script src="__PLUGINS__/IonCalendar/js/moment.min.js"></script>
+<script src="__PLUGINS__/IonCalendar/js/moment.zh-cn.js"></script>
+<script src="__PLUGINS__/IonCalendar/js/ion.calendar.min.js"></script>
+<script src="__JS__/calendar.js"></script>
+<script src="__PLUGINS__/slick/js/slick.js"></script>
+<script src="__JS__/search.js"></script>
+<script src="__JS__/smartmarquee.js"></script>
+
+
+<script>
+$(function(){
+    $('.slick').slick({
+        dots: true,  //显示项目导航
+        fade: true,  //淡入淡出
+        autoplay: true  //自动播放
+    });
+
+    //smartmarquee 跑马灯
+    $(".smartexp").smartmarquee({
+        // animate duration
+        duration: 3000,
+        // auto loop
+        loop : true,
+        // interval duration
+        interval : 18000,
+        // 'vertical' or 'horizontal'
+        axis : "vertical",
+    });
+});
+$("#Index_index").addClass("active");
+
+
+
+</script>
+</body>
+</html>

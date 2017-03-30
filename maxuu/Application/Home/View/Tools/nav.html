@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>{$title} | 米鱼博客</title>
+<meta name="keywords" content="开发工具，常用导航，工具箱，快捷导航，快捷工具，CSS，javascript">
+<meta name="description" content="米鱼博客，菜鸟米鱼的个人网站，致力于收集整理互联网最前沿的开发技术和行业资讯，以“勤于思考，善于借鉴”为宗旨，希望通过此博客，将自己的学习成果总结整理出来，与大家一起分享、交流与成长！">
+<include file="Public:css" />
+<link rel="stylesheet" type="text/css" href="__PLUGINS__/IonCalendar/css/ion.calendar.css">
+<link rel="stylesheet" href="__CSS__/index.css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+<section class="focusbox">
+    <div class="container">
+        <h1 class="focusbox-title">常用导航</h1>
+        <div class="focusbox-text">收集了一些自己常用的导航，并分门别类，便于快速导航。</div>
+    </div>
+</section>
+<!--container start-->
+<div class="container space30">
+    <div class="row">
+        <!--feature start-->
+        <div class="col-md-8">
+            <div class="content-wrap">
+                <div class="content">
+                    <volist name="navs" id="v">
+                        <div class="navs-box"><h2><a href="/blogs/0">{$v.name}</a></h2>
+                            <ul>
+                                <volist name="v['navs']" id="sub">
+                                    <li><a href="{$sub.url}" target="_blank">{$sub.name}</a></li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 sidebar">
+            <div class="navs-widget widget-b-list">
+                <volist name="tools" id="v">
+                    <h4>{$v.name}</h4>
+                    <ul>
+                        <volist name="v['navs']" id="sub">
+                            <li><a href="{$sub.url}" target="_blank">{$sub.name}</a></li>
+                        </volist>
+                    </ul>
+                </volist>
+            </div>
+            <div class="widget widget-posts">
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-2.png" class="full-img"></a>
+            </div>
+            <div class="navs-widget widget-b-list">
+                <volist name="blog" id="v">
+                    <h4>{$v.name}</h4>
+                    <ul>
+                        <volist name="v['navs']" id="sub">
+                            <li><a href="{$sub.url}" target="_blank">{$sub.name}</a></li>
+                        </volist>
+                    </ul>
+                </volist>
+            </div>
+            <div class="widget widget-posts">
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-1.jpg" class="full-img"></a>
+            </div>
+            <div class="widget widget-posts" >
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-7.jpg" class="full-img"></a>
+            </div>
+
+        </div>
+        <!--feature end-->
+    </div>
+</div>
+<include file="Public:footer" />
+<include file="Public:js" />
+<!-- calendar -->
+<script src="__PLUGINS__/IonCalendar/js/moment.min.js"></script>
+<script src="__PLUGINS__/IonCalendar/js/moment.zh-cn.js"></script>
+<script src="__PLUGINS__/IonCalendar/js/ion.calendar.min.js"></script>
+<script src="__JS__/calendar.js"></script>
+<script>
+$("#nav_index").addClass("active");
+$("#Function_index").addClass("active");
+</script>
+</body>
+</html>

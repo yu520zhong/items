@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<title>{$title} | 米鱼博客</title>
+<meta name="keywords" content="{$essay.keywords}米鱼">
+<meta name="description" content="{$essay.desc}">
+<include file="Public:css" />
+<link rel="stylesheet" href="__CSS__/index.css" />
+<include file="Public:aside_js" />
+</head>
+<body>
+<include file="Public:header" />
+
+<!-- revolution slider start -->
+<section class="focusbox">
+    <div class="container">
+        <h1 class="focusbox-title">生活微语</h1>
+        <div class="focusbox-text">生活无语，流年无痕，浅遇沧桑。</div>
+    </div>
+</section>
+<!--container start-->
+<div class="container space30">
+    <div class="row">
+        <div class="col-md-8 single">
+            <div class="blog-detail">
+                <header class="article-header">
+                    <h1 class="article-title"><a href="#">{$essay.name}</a>
+                    </h1>
+                    <div class="article-meta">
+                            <span class="item">{$essay.add_time}</span>
+                            <span class="item">作者：{$essay.author}</span>
+                            <span class="item">来源：{$essay.source}</span>
+                            <span class="item post-views">阅读({$essay.click})</span>
+                            <span class="item">
+                                    <a class="digest-label-link" href="/maxuu/Blog/index/id/29.html" target="_blank"></a>
+                            </span>
+                    </div>
+                </header>
+                <article class="blog-content article-content">
+                    <notempty name="essay.thumb">
+                        <p class="text-center">
+                            <img class="alignnone size-full wp-image-74" src="{$essay.thumb}">
+                        </p>
+                        <else/>
+                    </notempty>
+                     {$essay.content}
+                </article>
+                <p class="post-copyright">本文系互联网摘录，转载请注明出处：<a href="{$essay.url}" target="_blank">{$essay.source}</a></p>
+                <div class="share-single"><div class="action-share bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1474380922803">
+                    分享到：
+                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                    <a class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a>
+                    <a class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a>
+                    <a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                    <a class="bds_diandian" data-cmd="diandian" title="分享到点点网"></a>
+                    <a class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a>
+                    <a class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a>
+                    <a class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a>
+                    <a class="bds_taobao" data-cmd="taobao"></a>
+                    <a class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                    <a class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+                    <a class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                    <a class="bds_mail" data-cmd="mail" title="分享到邮件分享"></a>
+                    <a class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                    <a class="bds_more" data-cmd="more">更多</a>
+                    (<a class="bds_count" data-cmd="count" title="累计分享0次">0</a>)
+                </div>
+                    <script>
+                        window._bd_share_config = {
+                            common: {
+                                "bdText": "",
+                                "bdMini": "2",
+                                "bdMiniList": false,
+                                "bdPic": "",
+                                "bdStyle": "0"
+                            },
+                            share: [{
+                                bdCustomStyle: "http://7xsqlc.com1.z0.glb.clouddn.com/css/share.css"
+                            }]
+                        }
+                        with(document) 0[(getElementsByTagName("head")[0] || body).appendChild(createElement("script")).src = "http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=" + ~(-new Date() / 36e5)];
+                    </script>
+                </div>
+                <ul class="pager clearfix">
+                    <empty name="prev">
+                        <else/>
+                        <li class="previous">
+                            <a title="{$prev.name}" href="{:U('Essay/essay',array('id'=>$prev['id']))}" data-toggle="tooltip" data-original-title="{$prev.name}">上一篇</a>
+                        </li>
+                    </empty>
+                    <empty name="next">
+                        <else/>
+                        <li class="next">
+                            <a title="{$next.name}" href="{:U('Essay/essay',array('id'=>$next['id']))}" data-toggle="tooltip" data-original-title="{$next.name}">下一篇</a>
+                        </li>
+                    </empty>
+                </ul>
+                <div class="relates">
+                    <h3>推荐相关：</h3>
+                    <ul>
+                        <foreach name="recommend" item="v">
+                        <li>
+                            <a href="{:U('Essay/essay',array('id'=>$v['id']))}">{$v.name}</a>
+                            <time>{$v.add_time}</time>
+                        </li>
+                        </foreach>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="blog-comments mtop15">
+            <!-- 多说评论框 start -->
+                    <div class="ds-thread" data-thread-key="{$essay.id}" data-title="{$essay.name}" data-url="__ACTION__"></div>
+            <!-- 多说评论框 end -->
+            </div>
+        </div>
+
+       <div class="col-md-4 sidebar">
+            <div class="widget widget-posts">
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-2.png" class="full-img"></a>
+            </div>
+
+            <div class="widget widget-posts">
+                <h3>最新微语</h3>
+                <ul>
+                    <foreach name="latest" item="v">
+                        <li>
+                            <a href="{:U('Essay/essay',array('id'=>$v['id']))}">
+                                <dl class="hot-article">
+                                    <dt>
+                                        <notempty name="v.thumb">
+                                            <img class="thumb" src="{$v.thumb}" >
+                                            <else/>
+                                        </notempty>
+                                    </dt>
+                                    <dd><span class="text">{$v.name}</span></dd>
+                                    <dd><span class="muted">{$v.add_time}</span><span class="muted">{$v.author}</span></dd>
+                                </dl>
+                            </a>
+                        </li>
+                    </foreach>
+
+                </ul>
+            </div>
+            <div class="widget widget-posts" >
+                <a href="#" target="_blank" rel="nofollow"><img src="http://7xsqlc.com1.z0.glb.clouddn.com/banner/small-5.jpg" class="full-img"></a>
+            </div>
+
+       </div>
+        <!--feature end-->
+    </div>
+</div>
+<include file="Public:footer" />
+<include file="Public:js" />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"maceuu"};
+(function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+$("#Essay_index").addClass("active");
+</script>
+<!-- 多说公共JS代码 end -->
+</body>
+</html>
+
